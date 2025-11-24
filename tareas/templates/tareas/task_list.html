@@ -1,0 +1,27 @@
+{% extends 'tareas/base.html' %}
+{% block title %}Mis Tareas{% endblock %}
+
+{% block content %}
+<h1>Mis Tareas</h1>
+
+<a class="btn btn-primary mb-3" href="{% url 'tareas:task_add' %}">Nueva Tarea</a>
+
+{% if tasks %}
+<div class="list-group">
+    {% for task in tasks %}
+    <div class="list-group-item">
+        <h5>{{ task.title }}</h5>
+        <p>{{ task.description|truncatechars:120 }}</p>
+
+        <a href="{% url 'tareas:task_detail' task.id %}" class="btn btn-info btn-sm">Ver</a>
+        <a href="{% url 'tareas:task_edit' task.id %}" class="btn btn-warning btn-sm">Editar</a>
+        <a href="{% url 'tareas:task_delete' task.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p class="text-muted">No tienes tareas aún.</p>
+{% endif %}
+{% endblock %}
+
+

@@ -1,0 +1,19 @@
+{% extends 'tareas/base.html' %}
+{% block title %}Formulario{% endblock %}
+
+{% block content %}
+<h2>{% if edit_mode %}Editar tarea{% else %}Nueva tarea{% endif %}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button class="btn btn-success">
+        {% if edit_mode %}Guardar cambios{% else %}Crear tarea{% endif %}
+    </button>
+
+    <a class="btn btn-secondary" href="{% url 'tareas:task_list' %}">Cancelar</a>
+</form>
+
+{% endblock %}
+

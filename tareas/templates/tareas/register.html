@@ -1,0 +1,15 @@
+{% extends 'tareas/base.html' %}
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+<h2>Crear cuenta</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-success">Registrarse</button>
+</form>
+
+<p class="mt-2"><a href="{% url 'login' %}">Iniciar sesión</a></p>
+
+{% endblock %}

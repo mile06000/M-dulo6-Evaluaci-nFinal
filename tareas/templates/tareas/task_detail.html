@@ -1,0 +1,10 @@
+{% extends 'tareas/base.html' %}
+{% block content %}
+<h2>{{ task.title }}</h2>
+
+<p>{{ task.description }}</p>
+
+<a class="btn btn-warning" href="{% url 'tareas:task_edit' task.id %}">Editar</a>
+<a class="btn btn-danger" href="{% url 'tareas:task_delete' task.id %}">Eliminar</a>
+<a class="btn btn-secondary" href="{% url 'tareas:task_list' %}">Volver</a>
+{% endblock %}
